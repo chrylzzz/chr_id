@@ -1,6 +1,8 @@
 package chryl;
 
+import cn.hutool.core.lang.Snowflake;
 import com.chryl.ChrIdApplication;
+import com.chryl.hutool_id.IdUtil;
 import com.chryl.snowFlake.IdGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -68,4 +70,13 @@ public class IdGeneratorTest {
         executorService.shutdown();
     }
 
+    @Autowired
+    IdUtil idUtil;
+
+    @Test
+    public void show() {
+        for (int i = 0; i < 99; i++) {
+            System.out.println(idUtil.nextShortId());
+        }
+    }
 }

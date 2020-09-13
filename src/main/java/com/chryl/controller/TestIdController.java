@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/id")
 public class TestIdController {
 
-    @GetMapping
-    public void show() {
+
+    public static void main(String[] args) {
+
 
     }
 }
