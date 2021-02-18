@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
+ * 基于糊涂工具包的雪花id
  * Created by Chr.yl on 2020/7/25.
  *
  * @author Chr.yl
@@ -21,7 +22,10 @@ import javax.annotation.PostConstruct;
 @Component
 public class IdGenerator {
 
-    private long workerId = 0;
+    private long workerId = 0;//机器id
+    private long datacenterId = 1;//数据中心id
+
+    private Snowflake snowflake = IdUtil.createSnowflake(workerId, datacenterId);
 
     @PostConstruct
     void init() {
@@ -72,8 +76,12 @@ public class IdGenerator {
         return IdUtil.randomUUID();
     }
 
-    private Snowflake snowflake = IdUtil.createSnowflake(workerId, 1);
 
+    /**
+     * 19位雪花id
+     *
+     * @return
+     */
     public synchronized long snowflakeId() {
         return snowflake.nextId();
     }

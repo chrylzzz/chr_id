@@ -28,6 +28,14 @@ public class IdGeneratorTest {
     private IdGenerator idGenerator;
 
     @Test
+    public void testNextId() {
+        for (int i = 0; i < 20; i++) {
+            long nextid = idGenerator.snowflakeId();
+            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362347306820698122
+        }
+    }
+
+    @Test
     public void testBatchId() {
         for (int i = 0; i < 100; i++) {
             String batchId = idGenerator.batchId(1001, 100);
