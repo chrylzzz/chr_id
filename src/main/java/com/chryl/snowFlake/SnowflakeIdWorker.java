@@ -1,5 +1,9 @@
 package com.chryl.snowFlake;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 /**
  * 自实现雪花id
  * Created by Chr.yl on 2020/7/25.
@@ -167,14 +171,22 @@ public class SnowflakeIdWorker {
      */
     public static void main(String[] args) {
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
-        for (int i = 0; i < 1000; i++) {
+        /*for (int i = 0; i < 1000; i++) {
             long id = idWorker.nextId();
             System.out.println(Long.toBinaryString(id));
             System.out.println(id);
         }
 
-        System.out.println(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis());*/
 
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < 10000000; i++) {
+//            set.add(UUID.randomUUID().toString());
+            set.add(String.valueOf(idWorker.nextId()));
+//            set.add(String.valueOf(UUID.randomUUID().toString().hashCode()));
+
+        }
+        System.out.println(set.size());
     }
 
 
