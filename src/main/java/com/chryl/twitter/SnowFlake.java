@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * java代码雪花算法源码
  * Created by Chr.yl on 2021/2/18.
  *
  * @author Chr.yl
