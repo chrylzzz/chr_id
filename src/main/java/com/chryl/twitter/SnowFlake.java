@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * java代码雪花算法源码
- * Created by Chr.yl on 2021/2/18.
+ * Created by Chr.yl on 2019/7/10.
  *
  * @author Chr.yl
  */
@@ -16,7 +16,11 @@ public class SnowFlake {
     /**
      * 起始的时间戳
      */
-    private final static long START_STMP = 1480166465631L;
+    private final static long START_STMP = 1451606400000L;
+//    private final static long START_STMP = 1451606400000L;
+//    private final static long START_STMP = 1480166465631L;
+//    private final static long START_STMP = 1613696379431L;
+//    private final static long START_STMP = 1613718792519L;
 
     /**
      * 每一部分占用的位数
@@ -156,7 +160,14 @@ public class SnowFlake {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        contextLoads();
+//        contextLoads();
+
+        SnowFlake snowFlake = new SnowFlake(0, 1);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(snowFlake.nextId());
+        }
+        System.out.println(System.currentTimeMillis());
+
     }
 
 }

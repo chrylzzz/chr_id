@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
+ * 毫秒+随机数
  * Created by Chr.yl on 2020/8/30.
  *
  * @author Chr.yl
@@ -12,7 +13,8 @@ public class ChrIdUtil {
     private static byte[] lock = new byte[0];
 
     //位数: 默认8位
-    private final static long w = 100000000;
+    private final static long w = 100000000L;
+//    private final static long w = 1000000000000000000L;
 
     /**
      * 根据时间戳和随机数生成唯一序列
@@ -33,11 +35,12 @@ public class ChrIdUtil {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
         String format = dateTimeFormatter.format(localDateTime);
-        System.out.println(format);
+//        System.out.println(format);
         return format;
     }
 
     public static void main(String[] args) {
         System.out.println(nextId());
+        System.out.println(nextId().length());
     }
 }

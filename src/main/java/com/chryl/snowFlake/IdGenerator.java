@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * 基于糊涂工具包的雪花id
- * Created by Chr.yl on 2020/7/25.
+ * Created by Chr.yl on 2020/7/10.
  *
  * @author Chr.yl
  */
@@ -86,6 +86,13 @@ public class IdGenerator {
         return snowflake.nextId();
     }
 
+    /**
+     * 自定义机器id和数据中心id
+     *
+     * @param workerId
+     * @param dataCenterId
+     * @return
+     */
     public synchronized long snowflakeId(long workerId, long dataCenterId) {
         Snowflake snowflake = IdUtil.createSnowflake(workerId, dataCenterId);
         return snowflake.nextId();

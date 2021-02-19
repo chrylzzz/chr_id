@@ -1,9 +1,9 @@
 package chryl;
 
-import cn.hutool.core.lang.Snowflake;
 import com.chryl.ChrIdApplication;
 import com.chryl.hutool_id.IdUtil;
 import com.chryl.snowFlake.IdGenerator;
+import com.chryl.snowFlake.IdGenerator22;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,12 +26,28 @@ public class IdGeneratorTest {
 
     @Autowired
     private IdGenerator idGenerator;
+    @Autowired
+    private IdGenerator22 idGenerator22;
+
+    /**
+     * 两个不同的数据中心id和机器id对比
+     */
+    @Test
+    public void testNextnewId() {
+        for (int i = 0; i < 20; i++) {
+            long nextid = idGenerator.snowflakeId();
+            //===============两个数据中心id和两个机器id
+            long nid = idGenerator22.snowflakeId();
+            log.info("批次号1: {} ,批次号2: {}", nextid, nid);
+        }
+    }
 
     @Test
     public void testNextId() {
         for (int i = 0; i < 20; i++) {
             long nextid = idGenerator.snowflakeId();
             log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362347306820698122
+//            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362567611371618308
         }
     }
 
