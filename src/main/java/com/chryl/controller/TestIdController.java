@@ -1,6 +1,8 @@
 package com.chryl.controller;
 
 import cn.hutool.core.collection.ConcurrentHashSet;
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
 import com.chryl.snowFlake.IdGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +30,26 @@ public class TestIdController {
     @GetMapping("test")
     public void testNextId() {
 
-        Set<String> set = new HashSet<>();
-        for (int i = 0; i < 10000; i++) {
-            long nextid = idGenerator.snowflakeId();
-//            set.add(String.valueOf(nextid));
-            cset.add(String.valueOf(nextid));
-
-//            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362347306820698122
-//            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362567611371618308
-        }
+//        Set<String> set = new HashSet<>();
+//        for (int i = 0; i < 10000; i++) {
+//            long nextid = idGenerator.snowflakeId();
+////            set.add(String.valueOf(nextid));
+//            cset.add(String.valueOf(nextid));
+//
+////            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362347306820698122
+////            log.info("批次号: {} ,长度: {}", nextid, String.valueOf(nextid).length());//1362567611371618308
+//        }
 //        System.out.println(set.size());
         System.out.println(cset.size());
+    }
+    private static Snowflake snowflake = IdUtil.createSnowflake(1, 2);
+    public static void main(String[] args) {
+//        System.out.println(snowflake.nextId());
+//        System.out.println(snowflake.nextId());
+//        System.out.println(snowflake.nextId());
+        final Snowflake snowflake = IdUtil.createSnowflake(1, 1);
+        final long l = snowflake.nextId();
+        System.out.println(String.valueOf(l).length());
     }
 
 }
